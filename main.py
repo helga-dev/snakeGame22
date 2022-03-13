@@ -40,12 +40,13 @@ def main():
         snake.move()
         snake.check_for_food(food)
 
-        if snake.check_bounds_collision():
+        if snake.check_bounds_collision() or snake.check_body_collision():
             text = font.render('Game Over', True, TEXT_COLOR)
             window.blit(text, (100, 200))
             pygame.display.update()
             pygame.time.delay(3000)
             snake.spawn()
+            # food.respawn()
 
         window.fill(BACK_COLOR)
         snake.draw(game=pygame, window=window)

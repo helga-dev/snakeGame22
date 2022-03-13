@@ -101,4 +101,16 @@ class Snake:
     def check_for_food(self, food):
         head = self.body[-1]
         if head.x == food.x and head.y == food.y:
+            self.eat()
             food.respawn()
+
+    def check_body_collision(self):
+        head = self.body[-1]
+        has_eaten_body = False
+
+        for i in range(len(self.body) - 1):
+            segment = self.body[i]
+            if head.x == segment.x and head.y == segment.y:
+                has_eaten_body=True
+        return has_eaten_body
+
